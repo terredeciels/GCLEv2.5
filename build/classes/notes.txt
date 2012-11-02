@@ -1,0 +1,93 @@
+Dans la class Coups :
+   @Override
+    public String toString() {
+        exception coups inconnu
+        if (type_de_coups == TYPE_DE_COUPS.Ordinaire) {
+            return fString(caseO) + "-" + fString(caseX);
+        } 
+        else if (type_de_coups == TYPE_DE_COUPS.Roque) {
+            if (caseO == CASES.E1.index && caseX == CASES.G1.index || caseO == CASES.E8.index && caseX == CASES.G8.index) {
+                return "O-O";
+            } else if (caseO == CASES.E1.index && caseX == CASES.C1.index || caseO == CASES.E8.index && caseX == CASES.C8.index) {
+                return "O-O-O";
+            }
+            //promotion, affichage ?
+        } else if (type_de_coups == TYPE_DE_COUPS.Promotion) {
+            return fString(caseO) + "-" + fString(caseX) + ":" + piecePromotion;
+        }
+        return "?,?";
+    }
+_____________________
+   public static String fString(int caseX) {
+        final int col = fColonne(caseX) - 2;
+        final int rg = 3 - fRangee(caseX);
+        return colonneLabel.charAt(col) + Integer.toString(rg);
+        return "";
+    }
+_____________________
+ public static int fColonne(int caseX) {
+        return caseX % 12;
+    }
+
+    public static int fRangee(int caseX) {
+        return caseX / 12;
+    }
+
+    public static String getString(Coups coups) {
+        final int caseO = coups.getCaseO();
+        final int caseX = coups.getCaseX();
+        final int icaseO = INDICECASES[caseO];
+        final int icaseX = INDICECASES[caseX];
+//        return fString(caseO) + "-" + fString(caseX);
+        return STRING_CASES[INDICECASES[caseO]] + "-" + STRING_CASES[INDICECASES[caseX]];
+    }
+___________________________
+Dans la classe ICodage :
+
+    final int CAVALIER_BLANC = 3;
+    final int CAVALIER_NOIR = -3;
+    final int DAME_BLANC = 5;
+    final int DAME_NOIR = -5;
+    final int FOU_BLANC = 4;
+    final int FOU_NOIR = -4;
+    final int PION_BLANC = 1;
+    final int PION_NOIR = -1;
+    final int ROI_BLANC = 6;
+    final int ROI_NOIR = -6;
+    final int TOUR_BLANC = 2;
+    final int TOUR_NOIR = -2;
+    final int[] echiquier = {26, 27, 28, 29, 30, 31, 32, 33,
+        38, 39, 40, 41, 42, 43, 44, 45,
+        50, 51, 52, 53, 54, 55, 56, 57,
+        62, 63, 64, 65, 66, 67, 68, 69,
+        74, 75, 76, 77, 78, 79, 80, 81,
+        86, 87, 88, 89, 90, 91, 92, 93,
+        98, 99, 100, 101, 102, 103, 104, 105,
+        110, 111, 112, 113, 114, 115, 116, 117};
+________________________________
+Dans la classe CPAdaptateur
+
+ TYPES  3:TOUR  1:CAVALIER  2:FOU  4:DAME  6:ROI  5:PION
+
+        TOUR = getType(Chess.A1);
+        CAVALIER = getType(Chess.B1);
+        FOU = getType(Chess.C1);
+        DAME = getType(Chess.D1);
+        ROI = getType(Chess.E1);
+        PION = getType(Chess.A2);
+
+
+    public final void getCPEtats(final IFonctionEntiere getFct) {
+        //obtenir une fois pour toute
+        //int[] cp_etats = new int[NB_CASES];
+        // iterateur utiles ?
+//        ArrayIterator itCaseO = new ArrayIterator(cp_etats);
+//        while (itCaseO.hasNext()) {
+//            Integer caseO = (Integer) itCaseO.next();
+//            cp_etats[caseO] = getF.exec(caseO);
+//        }
+//        for (int caseO = 0; caseO <= 63; caseO++) {
+//            cp_etats[caseO] = getFct.exec(caseO);
+//        }
+    }
+__________________________________
