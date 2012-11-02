@@ -1,0 +1,15 @@
+Classe ChessPressoToGCL
+
+        //roque possible. Si aucun des adversaires ne peut roquer,
+        //alors inscrire « - ». Sinon, utiliser une combinaison de plusieurs lettres :
+        //« K » (les blancs peuvent du côté roi, c'est-à-dire le petit roque), 
+        //« Q » (les blancs peuvent du côté dame, grand roque),
+        //« k » (les noirs peuvent du côté roi) et 
+        //« q » (les noirs peuvent du côté dame).
+        // '-' -> 0 ; 'Q' -> 1 ; 'K' -> 2 ; 'KQ' -> 3 ; 
+        // 'q' -> 4 ; 'k' -> 8 ; 'kq' -> 12
+        // 'Kk' -> 10 ; 'Kq' -> 6 ; 'Kkq' -> 14
+        // 'Qk' ->  9 ; 'Qq' ->  5; 'Qkq' -> 13
+        // 'KQk' -> 11 ; 'KQq' -> 7;
+        // 'KQkq' -> 15
+        // roqueschesspresso -> binaire -> roques possibles

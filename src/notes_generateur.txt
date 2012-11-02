@@ -1,0 +1,179 @@
+
+_____________________________________________________________________________
+Passer des pseudo coups aux coups
+
+
+  public final void coupsGPosition(final GPosition position, final int couleur) {
+
+        pseudoCoupsGPosition();
+        // ep, promotion avant recherche d'échecs
+//**
+//
+//        coupsEpPostion(coupsGPosition, position, couleur);
+//        //recherche d'éventuelles mises en échecs
+//        for (Coups coups : coupsGPosition) {
+//            ArrayList<Coups> pseudoCoupsPosSimul;
+//            int caseRoiCouleur;
+//            boolean estEnEchec;
+//            GPosition positionSimul = fPositionSimul(position, coups, couleur);
+//            caseRoiCouleur = fCaseRoi(positionSimul, couleur);
+//            // attention: -couleur
+//            pseudoCoupsPosSimul = pseudoCoupsGPosition(positionSimul, -couleur);
+//            estEnEchec = fEstEnEchec(pseudoCoupsPosSimul, caseRoiCouleur);
+//            if (estEnEchec) {
+//                coupsGPosition.remove(coups);
+//            }
+//        }
+//        //roques après recherche d'échecs
+//        ajouterRoquesPossibles(coupsGPosition, position, couleur);
+//
+//**
+
+    }
+_____________________________________________________________________________
+//    private GPosition fPositionSimul(GPosition position, Coups coups, int couleur) {
+//        GPosition positionSimul = position.copie();
+//        int caseO = coups.getCaseO();
+//        int caseX = coups.getCaseX();
+//        if (coups.getTypeDeCoups() == TYPE_DE_COUPS.Ordinaire) {
+//            positionSimul.getEtats()[caseX] = positionSimul.getEtats()[caseO];
+//            positionSimul.getEtats()[caseO] = VIDE;
+//        } else if (coups.getTypeDeCoups() == TYPE_DE_COUPS.EnPassant) {
+//            //caseX == caseEP
+//            positionSimul.getEtats()[caseX] = positionSimul.getEtats()[caseO];
+//            positionSimul.getEtats()[caseO] = VIDE;
+//            if (couleur == BLANC) {
+//                positionSimul.getEtats()[caseX + sud] = VIDE;
+//            } else if (couleur == BLANC) {
+//                positionSimul.getEtats()[caseX + nord] = VIDE;
+//            }
+//        } else if (coups.getTypeDeCoups() == TYPE_DE_COUPS.Promotion) {
+//            positionSimul.getEtats()[caseX] = coups.getPiecePromotion();
+//            positionSimul.getEtats()[caseO] = VIDE;
+//        }
+//        return positionSimul;
+//    }
+//
+//    private void ajouterRoquesPossibles(ArrayList<Coups> coupsGPosition, GPosition position, int couleur) {
+//        // attention: -couleur
+//        ArrayList<Coups> coupsAttaque = pseudoCoupsGPosition(position, -couleur);
+//        int[] etats = position.getEtats();
+//        boolean possible;
+//        if (couleur == BLANC) {
+//            if (position.isPetitRoqueBlancPossible()) {
+//                possible = (etats[CASES.F1.getIndex()] == VIDE && etats[CASES.G1.getIndex()] == VIDE);
+//                possible &= !(attaquePetitRoque(CASES.E1.getIndex(), CASES.F1.getIndex(), CASES.G1.getIndex(), coupsAttaque));
+//                if (possible) {
+//                    coupsGPosition.add(new Coups(CASES.E1.getIndex(), CASES.G1.getIndex(), TYPE_DE_COUPS.Roque, PAS_DE_PIECE));
+//                }
+//            }
+//            if (position.isGrandRoqueBlancPossible()) {
+//                possible = (etats[CASES.E1.getIndex()] == VIDE && etats[CASES.D1.getIndex()] == VIDE
+//                        && etats[CASES.C1.getIndex()] == VIDE && etats[CASES.B1.getIndex()] == VIDE);
+//                possible &= !(attaquePetitRoque(CASES.E1.getIndex(), CASES.D1.getIndex(),
+//                        CASES.C1.getIndex(), CASES.B1.getIndex(), coupsAttaque));
+//                if (possible) {
+//                    coupsGPosition.add(new Coups(CASES.E1.getIndex(), CASES.C1.getIndex(), TYPE_DE_COUPS.Roque, PAS_DE_PIECE));
+//                }
+//            }
+//        } else {
+//
+//            if (position.isPetitRoqueNoirPossible()) {
+//                possible = (etats[CASES.F8.getIndex()] == VIDE && etats[CASES.G8.getIndex()] == VIDE);
+//                possible &= !(attaquePetitRoque(CASES.E8.getIndex(), CASES.F8.getIndex(), CASES.G8.getIndex(), coupsAttaque));
+//                if (possible) {
+//                    coupsGPosition.add(new Coups(CASES.E8.getIndex(), CASES.G8.getIndex(), TYPE_DE_COUPS.Roque, PAS_DE_PIECE));
+//                }
+//            }
+//            if (position.isGrandRoqueNoirPossible()) {
+//                possible = (etats[CASES.E8.getIndex()] == VIDE && etats[CASES.D8.getIndex()] == VIDE
+//                        && etats[CASES.C8.getIndex()] == VIDE && etats[CASES.B8.getIndex()] == VIDE);
+//                possible &= !(attaquePetitRoque(CASES.E8.getIndex(), CASES.D8.getIndex(),
+//                        CASES.C8.getIndex(), CASES.B8.getIndex(), coupsAttaque));
+//                if (possible) {
+//                    coupsGPosition.add(new Coups(CASES.E8.getIndex(), CASES.C8.getIndex(), TYPE_DE_COUPS.Roque, PAS_DE_PIECE));
+//                }
+//            }
+//        }
+//    }
+//
+//    private boolean attaquePetitRoque(int E1ouE8, int F1ouF8, int G1ouG8, ArrayList<Coups> coupsAttaque) {
+//        boolean attaque = false;
+//        int caseX;
+//        for (Coups coups : coupsAttaque) {
+//            caseX = coups.getCaseX();
+//            if (caseX == E1ouE8 || caseX == F1ouF8 || caseX == G1ouG8) {
+//                attaque = true;
+//                break;
+//            }
+//        }
+//        return attaque;
+//    }
+//
+//    private boolean attaquePetitRoque(int E1ouE8, int D1ouD8, int C1ouC8, int B1ouB8, ArrayList<Coups> coupsAttaque) {
+//        boolean attaque = false;
+//        int caseX;
+//        for (Coups coups : coupsAttaque) {
+//            caseX = coups.getCaseX();
+//            if (caseX == E1ouE8 || caseX == D1ouD8 || caseX == C1ouC8 || caseX == B1ouB8) {
+//                attaque = true;
+//                break;
+//            }
+//        }
+//        return attaque;
+//    }
+//
+//    private int fCaseRoi(GPosition position, int couleur) {
+//        int[] etats = position.getEtats();
+//        int caseRoi = OUT;
+//        int etatO;
+//        int typeO;
+//        for (int caseO : ECHIQUIER) {
+//            etatO = etats[caseO];
+//            typeO = Math.abs(etatO);
+//            if (typeO == ROI && etatO * couleur > 0) {
+//                caseRoi = caseO;
+//                break;
+//            }
+//        }
+//        return caseRoi;
+//
+//    }
+//
+//    private boolean fEstEnEchec(ArrayList<Coups> pseudoCoupsPosSimul, int caseRoi) {
+//        boolean estEnEchec = false;
+//        for (Coups coups : pseudoCoupsPosSimul) {
+//            if (coups.getCaseX() == caseRoi) {
+//                estEnEchec = true;
+//                break;
+//            }
+//        }
+//        return estEnEchec;
+//    }
+//
+//    private void coupsEpPostion(ArrayList<Coups> coupsGPosition, final GPosition position, final int couleur) {
+//        final int caseEP = position.getCaseEP();
+//        //prise en passant (avant recherche d'échecs)
+//        if (caseEP != PAS_DE_CASE) {
+//
+//            if (couleur == BLANC) {
+//                int caseX = caseEP + sudest;
+//                if (position.getEtats()[caseX] == PION_BLANC) {
+//                    coupsGPosition.add(new Coups(caseX, caseEP, TYPE_DE_COUPS.EnPassant, PAS_DE_PIECE));
+//                }
+//                caseX = caseEP + sudouest;
+//                if (position.getEtats()[caseX] == PION_BLANC) {
+//                    coupsGPosition.add(new Coups(caseX, caseEP, TYPE_DE_COUPS.EnPassant, PAS_DE_PIECE));
+//                }
+//            } else {
+//                int caseX = caseEP + nordest;
+//                if (position.getEtats()[caseX] == PION_BLANC) {
+//                    coupsGPosition.add(new Coups(caseX, caseEP, TYPE_DE_COUPS.EnPassant, PAS_DE_PIECE));
+//                }
+//                caseX = caseEP + nordouest;
+//                if (position.getEtats()[caseX] == PION_BLANC) {
+//                    coupsGPosition.add(new Coups(caseX, caseEP, TYPE_DE_COUPS.EnPassant, PAS_DE_PIECE));
+//                }
+//            }
+//        }
+//    }
