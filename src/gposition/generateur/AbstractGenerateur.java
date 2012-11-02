@@ -1,5 +1,6 @@
 package gposition.generateur;
 
+import gposition.GCoups;
 import gposition.*;
 import java.util.*;
 

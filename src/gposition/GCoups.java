@@ -1,4 +1,6 @@
-package gposition.generateur;
+package gposition;
+
+import gposition.generateur.*;
 
 public class GCoups implements ICodage {
 

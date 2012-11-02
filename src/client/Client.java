@@ -18,10 +18,10 @@ public class Client {
         String[] command = new String[3];
 
         command[0] = "-cli";
-        command[1] = "F:/ProgmEchecsNotes/shirov.pgn";//814 parties
+       // command[1] = "F:/ProgmEchecsNotes/shirov.pgn";//814 parties
 //        command[1] = "F:/ProgmEchecsNotes/paulsen.pgn";//322
 //        command[1] = "F:/ProgmEchecsNotes/ashley.pgn";//414
-//          command[1] = "F:/ProgmEchecsNotes/bird.pgn";//353 
+          command[1] = "F:/ProgmEchecsNotes/bird.pgn";//353 
 //        command[1] = "F:/ProgmEchecsNotes/Tartakower.pgn";//1290
 //            command[1] = "F:/ProgmEchecsNotes/Capablanca.pgn";//597
 //        command[1] = "F:/ProgmEchecsNotes/Boleslavsky.pgn";//651

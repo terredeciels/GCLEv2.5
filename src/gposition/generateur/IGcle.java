@@ -1,5 +1,6 @@
 package gposition.generateur;
 
+import gposition.GCoups;
 import java.util.*;
 
 public interface IGcle {
